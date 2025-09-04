@@ -374,3 +374,77 @@ let array3d = [ "a" , ["b" , ["m" , "n"],  "c"] , "d"]
 // n - 1,1,1
 
 
+
+let cityArr1 = ["Pune" , "Mumbai" , "Nagpur" , "Delhi", "Agra" , "Noida", "Banglore" , "Chennai" , "Hydrabad"]
+
+console.log(cityArr1)
+console.log(cityArr1.toString())
+// console.log(cityArr1)
+
+console.log(cityArr1.at(2))
+console.log(cityArr1.join(' * '))
+
+console.log(cityArr1.pop())
+console.log(cityArr1)
+
+console.log(cityArr1.push("Nashik"))
+console.log(cityArr1)
+
+console.log(cityArr1.shift())
+console.log(cityArr1)
+
+console.log(cityArr1.unshift("Thane"))
+console.log(cityArr1)
+
+console.log(cityArr1.slice(2,5))
+console.log(cityArr1)
+
+console.log(cityArr1.slice(5))
+
+// splice --- operation at which index , how many elements want to remove , which elements want to add
+
+console.log(cityArr1.splice(2,1,"Satara" , "Kolhapur"))
+let newCityArr = cityArr1.splice(4,2,"Aurangabad" , "Jalgaon")
+console.log(newCityArr)
+
+console.log(cityArr1)
+
+
+let cityArr21 = ["Pune" , "Mumbai" , "Nagpur" , "Delhi", "Agra" , "Noida", "Banglore" , "Chennai" , "Hydrabad"]
+
+let cityArr212 = cityArr21 + cityArr1
+console.log(cityArr212)
+
+let cityArr213 = cityArr21.concat(cityArr1)
+console.log(cityArr213)
+
+// let revCityArr = cityArr21.reverse()
+// console.log(revCityArr)
+
+// let sortCityArr = cityArr21.sort()
+// console.log(sortCityArr)
+
+
+console.log(cityArr2.flat(1))
+console.log(cityArr2.flat(2))
+console.log(cityArr2.flat(3))
+
+// console.log(cityArr21.delete(2))
+
+console.log(Array.isArray(cityArr21))
+
+// let cityArr21Entries = cityArr21.entries()
+// console.log(cityArr21Entries)
+
+for ( let entry of cityArr21.entries()){
+    console.log(entry)
+}
+
+// const numEven = [2,4,6,8, 10, 12, 14, 16, 19, 20]
+
+// function isEven(number){
+//     return number % 2 == 0
+// }
+
+// let evenNum = numEven.every(isEven)
+// console.log(evenNum)
