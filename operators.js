@@ -186,3 +186,5 @@ let m = 753 // binary 1011110001
 let n = 692 // binary 1010110100
 let o = 887 // binary 1101110111
 
+
+console.log((89/6*4)**2 + (m & n) - (o | n) / (m ^ n))
