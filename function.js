@@ -22,6 +22,8 @@ greet();
 greet();
 greet();
 
+let globalVar = "I am a global variable";
+
 
 // parameter function
 
@@ -151,3 +153,179 @@ evenOdd(10);
 evenOdd(15);
 
 // evenOdd(prompt("Enter a number: "));
+
+
+// recursive function
+
+
+function factorial(n){
+    if(n === 0 || n === 1){
+        return 1;
+    }
+    else{
+        return n * factorial(n-1); // recursive call
+    }
+}
+
+let num = 5;
+document.write("The factorial of " + num + " is: " + factorial(num) + "<br>");
+
+
+// 5! = 5 * 4!
+// 4! = 4 * 3!
+// 3! = 3 * 2!
+// 2! = 2 * 1!
+// 1! = 1
+
+// 5! = 5 * 4 * 3 * 2 * 1 = 120
+
+
+// Fibonacci series using recursion
+
+// 0 1 1 2 3 5 8 13 21 34 55 ...
+
+function fibonacci(n){      
+    if(n === 0){
+        return 0;
+    }       
+    else if(n === 1){
+        return 1;
+    }   
+    else{
+        return fibonacci(n-1) + fibonacci(n-2); // recursive call
+    }       
+}
+
+let terms = 10;
+document.write("Fibonacci series up to " + terms + " terms:<br>");
+
+
+for(let i=0; i<terms; i++){
+    document.write(fibonacci(i) + " ");
+}
+
+document.write("<br>");
+
+// 0 1 1 2 3 5 8 13 21 34 55 ...
+// f(0) = 0
+// f(1) = 1
+// f(2) = f(1) + f(0) = 1 + 0 = 1
+// f(3) = f(2) + f(1) = 1 + 1 = 2
+// f(4) = f(3) + f(2) = 2 + 1 = 3               
+
+// f(5) = f(4) + f(3) = 3 + 2 = 5       
+// f(6) = f(5) + f(4) = 5 + 3 = 8
+// f(7) = f(6) + f(5) = 8 + 5 = 13
+// f(8) = f(7) + f(6) = 13 + 8 = 21
+// f(9) = f(8) + f(7) = 21 + 13 = 34
+// f(10) = f(9) + f(8) = 34 + 21 = 55
+
+
+// scope in JavaScript
+
+// global scope
+
+
+function showGlobalVar(){
+    document.write(globalVar + "<br>"); // accessible
+}
+
+showGlobalVar();
+
+
+function anotherFunction(){
+    document.write(globalVar + "<br>"); // accessible
+}
+
+anotherFunction();
+
+// function scope
+
+function functionScope(){
+    let functionVar = "I am a function variable";
+    document.write(functionVar + "<br>"); // accessible
+    if(true){
+       document.write(functionVar + " inside the condition" + "<br>"); // accessible
+    }
+}
+
+functionScope();
+
+// document.write(functionVar + "<br>"); // not accessible, error
+
+// block scope
+
+
+function blockScope(){
+    if(true){
+        let blockVar = "I am a block variable";
+        var blockVar2 = "I am a block variable declared with var";
+        document.write(blockVar + "<br>"); // accessible
+        document.write(blockVar2 + "<br>"); // accessible
+    }       
+    // document.write(blockVar + "<br>"); // not accessible, error
+    document.write(blockVar2 + "<br>"); // accessible, var is function scoped
+}
+
+blockScope();
+
+// document.write(blockVar + "outside" + "<br>"); // not accessible, error
+// document.write(blockVar2 + "outside" +  "<br>"); // not accessible, error
+
+
+// hoisting in JavaScript
+
+
+
+hoistedFunction(); // function call before declaration, works due to hoisting
+
+function hoistedFunction(){
+    document.write("This function is hoisted.<br>");
+}
+
+
+// hoistedFunctionExpression(); // error, function expression is not hoisted
+
+let hoistedFunctionExpression = function(){
+    document.write("This function expression is not hoisted.<br>");
+}       
+
+hoistedFunctionExpression(); // works, function call after declaration
+
+// hoistedArrowFunction(); // error, arrow function is not hoisted
+
+let hoistedArrowFunction = () => {
+    document.write("This arrow function is not hoisted.<br>");
+}
+
+
+// hoistedArrowFunction(); // works, function call after declaration
+
+// parameter function hoisting
+
+hoistedParamFunction(5,10); // works, function call before declaration
+
+function hoistedParamFunction(a, b){
+    document.write("The sum of " + a + " and " + b + " is: " + (a+b) + "<br>");
+}
+
+
+// variable hoisting
+
+document.write("The value of hoistedVar is: " + hoistedVar + "<br>"); // undefined due to hoisting
+
+
+var hoistedVar = "I am a hoisted variable";
+
+// only the declaration is hoisted, not the initialization
+
+
+// let and const are not hoisted
+
+// document.write("The value of hoistedLet is: " + hoistedLet + "<br>"); // error, let is not hoisted
+
+// let hoisted = "I am not hoisted but I am declared";
+
+document.write("The value of hoistedLet is: " + hoistedLet + "<br>"); // works, let is declared
+
+const hoistedConst = "I am not hoisted but I am declared";
