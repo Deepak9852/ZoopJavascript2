@@ -253,21 +253,43 @@ functionScope();
 
 // document.write(functionVar + "<br>"); // not accessible, error
 
+document.write("<br> <br>");
+
+
+
 // block scope
 
+let blockVar = "I am a block variable declared outside";
 
 function blockScope(){
+    let blockVar = "I am a block variable inside function";
+
     if(true){
-        let blockVar = "I am a block variable";
-        var blockVar2 = "I am a block variable declared with var";
+        let blockVar = "I am a block variable declared with let inside block"; // block scoped
+        // var blockVar2 = "I am a block variable declared with var inside block"; // function scoped
         document.write(blockVar + "<br>"); // accessible
-        document.write(blockVar2 + "<br>"); // accessible
+        // document.write(blockVar2 + "<br>"); // accessible
     }       
-    // document.write(blockVar + "<br>"); // not accessible, error
-    document.write(blockVar2 + "<br>"); // accessible, var is function scoped
+    document.write(blockVar + "<br>"); // not accessible, error
+    // document.write(blockVar2 + "<br>"); // accessible, var is function scoped
 }
 
+
+
 blockScope();
+
+
+document.writeln(blockVar + " outside" + "<br>"); // accessible
+
+
+
+
+
+
+
+
+
+
 
 // document.write(blockVar + "outside" + "<br>"); // not accessible, error
 // document.write(blockVar2 + "outside" +  "<br>"); // not accessible, error
@@ -326,6 +348,47 @@ var hoistedVar = "I am a hoisted variable";
 
 // let hoisted = "I am not hoisted but I am declared";
 
-document.write("The value of hoistedLet is: " + hoistedLet + "<br>"); // works, let is declared
+// document.write("The value of hoistedLet is: " + hoistedLet + "<br>"); // works, let is declared
 
-const hoistedConst = "I am not hoisted but I am declared";
+// const hoistedConst = "I am not hoisted but I am declared";
+
+
+
+// lexical scope
+
+let outerVar = "I am an outer variable";
+
+function outerFunction(){
+    let outerFunctionVar = "I am a variable in outer function";     
+    document.write(outerVar + "<br>"); // accessible
+    document.write(outerFunctionVar + "<br>"); // accessible        
+    function innerFunction(){
+        let innerFunctionVar = "I am a variable in inner function";
+        document.write(outerVar + "<br>"); // accessible
+        document.write(outerFunctionVar + "<br>"); // accessible
+        document.write(innerFunctionVar + "<br>"); // accessible
+    }       
+    innerFunction();
+    // document.write(innerFunctionVar + "<br>"); // not accessible, error
+}   
+outerFunction();
+
+// document.write(outerFunctionVar + "<br>"); // not accessible, error
+// document.write(innerFunctionVar + "<br>"); // not accessible, error  
+
+
+// clousere in JavaScript
+
+
+function outer(){
+    let count = 0;  
+    return function inner(){
+        count++;
+        document.write("Count is: " + count + "<br>");
+    }   
+}
+
+let counter = outer(); // counter is a closure
+counter();
+counter();
+counter();
