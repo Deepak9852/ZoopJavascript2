@@ -392,3 +392,25 @@ let counter = outer(); // counter is a closure
 counter();
 counter();
 counter();
+
+
+// higher order function
+
+function higherOrderFunction(fn, value1, value2){
+    return fn(value1, value2);
+}
+
+function sum(a, b){
+    return a + b;
+}
+
+function multiply(a, b){
+    return a * b;
+}   
+
+
+document.write("The sum of 5 and 10 is: " + higherOrderFunction(sum, 5, 10) + "<br>");
+
+document.write("The product of 5 and 10 is: " + higherOrderFunction(multiply, 5, 10) + "<br>");
+
+
