@@ -187,4 +187,14 @@ let n = 692 // binary 1010110100
 let o = 887 // binary 1101110111
 
 
-console.log((89/6*4)**2 + (m & n) - (o | n) / (m ^ n))
+console.log((89 / 6 * 4) ** 2 + (m & n) - (o | n) / (m ^ n))
+
+// add number using rest operator
+function addNumbers(...numbers) {
+    let sum = 0;
+    for (let num of numbers) {
+        sum += num;
+    }
+    return sum;
+}
+console.log("Sum:", addNumbers(5, 10, 15, 20, 17, 18, 19, 20)); // Sum: 50
